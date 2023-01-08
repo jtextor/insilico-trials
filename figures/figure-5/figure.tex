@@ -1,0 +1,75 @@
+\documentclass[tikz]{standalone}
+
+
+\pagestyle{empty}
+
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue Light}
+
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Font settings:
+%\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+
+
+\newcommand{\panellabel}[2]{
+\node [inner sep=1pt,anchor=north west] at (#2) {\figf #1};
+}
+\newcommand{\panel}[3]{
+\node [inner sep=1pt,anchor=north west,align=center] (p#1) at (#2) {#3};
+\panellabel{#1}{#2};
+}
+
+\begin{document}
+
+\footnotesize
+
+\begin{tikzpicture}[yscale=1]
+
+\panel{A}{0,0}{\includegraphics[page=1]{plots/power-analysis.pdf}}
+\panel{B}{5.667,0}{\includegraphics[page=5]{plots/power-analysis.pdf}}
+\panel{C}{11.337,0}{\includegraphics[page=3]{plots/power-analysis.pdf}}
+%\panel{C}{0,-4}{\includegraphics[page=3]{plots/power-analysis.pdf}}
+%\panel{D}{7,-4}{\includegraphics[page=4]{plots/power-analysis.pdf}}
+
+\begin{scope}[xshift=2cm,yshift=-5.5cm]
+\node at (4,0) {Effect size:}; 
+\node (lr) [anchor=east] at (7,0) {2-year OS};
+\node (cs) [anchor=west] at (8,0) {Hazard ratio};
+
+\draw [line width=1pt] (lr.west) -- +(-5mm,0);
+\draw [line width=1pt,red] (cs.west) -- +(-5mm,0);
+\end{scope}
+
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[yscale=1]
+
+\panel{A}{0,0}{\includegraphics[page=1]{plots/power-analysis.pdf}}
+\panel{B}{5.667,0}{\includegraphics[page=2]{plots/power-analysis.pdf}}
+\panel{C}{11.337,0}{\includegraphics[page=3]{plots/power-analysis.pdf}}
+
+\begin{scope}[yshift=-5.25cm]
+\panel{D}{0,0}{\includegraphics[page=4]{plots/power-analysis.pdf}}
+\panel{E}{5.667,0}{\includegraphics[page=5]{plots/power-analysis.pdf}}
+\panel{F}{11.337,0}{\includegraphics[page=6]{plots/power-analysis.pdf}}
+\end{scope}
+
+
+\begin{scope}[xshift=2cm,yshift=-10.5cm]
+\node at (4,0) {Effect size:}; 
+\node (lr) [anchor=east] at (7,0) {2-year OS};
+\node (cs) [anchor=west] at (8,0) {Hazard ratio};
+
+\draw [line width=1pt] (lr.west) -- +(-5mm,0);
+\draw [line width=1pt,red] (cs.west) -- +(-5mm,0);
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

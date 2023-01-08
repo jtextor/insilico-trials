@@ -1,0 +1,97 @@
+\documentclass[tikz]{standalone}
+
+
+\pagestyle{empty}
+
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue Light}
+
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Font settings:
+%\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+
+
+\newcommand{\panellabel}[2]{
+\node [inner sep=1pt,anchor=south west,yshift=4mm] at (#2) {\figf #1};
+}
+\newcommand{\panel}[3]{
+\node [inner sep=1pt,anchor=north west,align=center] (p#1) at (#2) {#3};
+\panellabel{#1}{#2};
+}
+
+\definecolor{inccolor}{RGB}{190,190,190}
+\definecolor{poscolor}{RGB}{46,139,87}
+\definecolor{negcolor}{rgb}{0,0,0}
+\definecolor{harmcolor}{RGB}{178,34,34}
+
+\begin{document}
+
+\footnotesize
+
+\begin{tikzpicture}[yscale=1]
+
+\panel{}{0,0}{\includegraphics{plots/alluvial.pdf}}
+\panel{}{4,0}{\includegraphics[page=2]{plots/alluvial.pdf}}
+\panel{}{8,0}{\includegraphics[page=3]{plots/alluvial.pdf}}
+\panel{}{12,0}{\includegraphics[page=4]{plots/alluvial.pdf}}
+
+\begin{scope}[xshift=2.3cm,xscale=4]
+\node at (0,0) {0};
+\node at (1,0) {1};
+\node at (2,0) {2};
+\node at (3,0) {3};
+\node at (1.5,5mm) {Interim analyses};
+\end{scope}
+
+\begin{scope}[yshift=-4.5cm]
+\panel{}{0,0}{\includegraphics[page=5]{plots/alluvial.pdf}}
+\panel{}{4,0}{\includegraphics[page=6]{plots/alluvial.pdf}}
+\panel{}{8,0}{\includegraphics[page=7]{plots/alluvial.pdf}}
+\panel{}{12,0}{\includegraphics[page=8]{plots/alluvial.pdf}}
+\end{scope}
+
+\begin{scope}[yshift=-9cm]
+\panel{}{0,0}{\includegraphics[page=9]{plots/alluvial.pdf}}
+\panel{}{4,0}{\includegraphics[page=10]{plots/alluvial.pdf}}
+\panel{}{8,0}{\includegraphics[page=11]{plots/alluvial.pdf}}
+\panel{}{12,0}{\includegraphics[page=12]{plots/alluvial.pdf}}
+\end{scope}
+
+\begin{scope}[xshift=2.4cm,xscale=4,yshift=-13.75cm]
+\node at (0,0) {Time (months)};
+\node at (1,0) {Time (months)};
+\node at (2,0) {Time (months)};
+\node at (3,0) {Time (months)};
+\end{scope}
+
+\begin{scope}[xshift=4cm,yshift=-14.5cm]
+
+\node at (1,0) {Trial result:};
+
+\node [text depth=0ex] (pos) at (4,0) {Inconclusive};
+\fill [inccolor] (pos.south west) rectangle +(-0.4,0.4);
+
+\node [text depth=0ex] (pos) at (6,0) {Positive};
+\fill [poscolor] (pos.south west) rectangle +(-0.4,0.4);
+
+\node [text depth=0ex] (neg) at (8,0) {Negative};
+\fill [negcolor] (neg.south west) rectangle +(-0.4,0.4);
+
+\node [text depth=0ex] (harm) at (10,0) {Harmful};
+\fill [harmcolor] (harm.south west) rectangle +(-0.35,0.35);
+
+\end{scope}
+
+%\node (lr) [] at (7,0) {Chemotherapy vs. placebo};
+%\node (lr) [] at (7,-4) {Immunotherapy vs. placebo};
+
+
+
+\end{tikzpicture}
+
+\end{document}

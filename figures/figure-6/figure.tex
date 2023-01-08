@@ -1,0 +1,45 @@
+\documentclass[tikz]{standalone}
+
+
+\pagestyle{empty}
+
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue Light}
+
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Font settings:
+%\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+
+
+\newcommand{\panellabel}[2]{
+\node [inner sep=1pt,anchor=south west] at (#2) {\figf #1};
+}
+\newcommand{\panel}[3]{
+\node [inner sep=1pt,anchor=north west,align=center] (p#1) at (#2) {#3};
+\panellabel{#1}{#2};
+}
+
+\begin{document}
+
+\footnotesize
+
+\begin{tikzpicture}[yscale=1]
+
+\panel{A}{0,0}{\includegraphics{plots/insilico-trials.pdf}}
+\panel{}{7,0}{\includegraphics[page=2]{plots/insilico-trials.pdf}}
+\panel{B}{0,-4}{\includegraphics[page=3]{plots/insilico-trials.pdf}}
+\panel{}{7,-4}{\includegraphics[page=4]{plots/insilico-trials.pdf}}
+
+\node (lr) [] at (7,0) {Chemotherapy vs. placebo (hazard ratio)};
+\node (lr) [] at (7,-4) {Chemoimmunotherapy vs. chemotherapy (OS at end of trial)};
+
+
+
+\end{tikzpicture}
+
+\end{document}

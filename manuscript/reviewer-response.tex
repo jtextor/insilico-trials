@@ -1,0 +1,285 @@
+
+
+\documentclass{article}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{a4wide}
+\usepackage{doi}
+\usepackage{xcolor}
+\usepackage{parskip}
+
+\usepackage{xr}
+\externaldocument{ms}
+
+\newcommand{\revr}[1]{{\color{gray} \itshape #1}}
+\newcommand{\auth}[1]{{#1}}
+\newcommand{\chng}[1]{{\color{blue!70!black} #1}}
+
+
+\newcommand{\myref}[2]{{\bfseries\color{red!70!black} Figure~\ref{#1}#2}}
+\newcommand{\mytref}[1]{{\bfseries\color{red!70!black} Table~\ref{#1}}}
+\newcommand{\mysupp}[2]{{\bfseries\color{red!70!black} Supplementary Figure~\ref{#1}#2}}
+\newcommand{\lr}[1]{{\bfseries\color{red!70!black} lines~\ref{#1:start}--\ref{#1:end}}}
+\newcommand{\lro}[1]{{\bfseries\color{red!70!black} line~\ref{#1}}}
+
+
+\newcommand{\untreated}{\auth{We agree that this was confusing; two other reviewers have raised the same issue.}
+
+\chng{We have addressed it by including a chemotherapy treatment effect in our fit of this cohort (\lr{parfitexplain}), and we have switched to using the more recent CA184-024 trial data as a basis for our predictions (\lr{sentfitca}). This allows us to estimate what the corresponding untreated cohort would look like by setting the treatment effect back to 0 (placebo arms in \myref{fig:fig3}{}, \mysupp{fig:chemotherapy_prophaz}{}, \mysupp{fig:pred_m2}{}, and \mysupp{fig:pred_m3}{}). Despite all these changes, the paper's general conclusions remained the same.}}
+
+\newcommand{\exponent}[1]{\auth{The same issue has been raised by reviewer #1. We based this exponent on the work of Murphy et al. \cite{Murphy2016} (exponent 0.785; source: cell lines). Since the model is merely used as an example to illustrate its application in a novel methodology to support clinical trial design and minor deviations from the exponent do not determine the outcomes of our experiments, we agree that a more commonly used exponent would be more suitable to prevent distracting the readership of the main message.}
+
+\chng{We changed this number in our model M1 to the 3/4 exponent of the West-Brown-Enquist universal growth law \cite{West2001} and re-did all analyses with this exponent (\myref{fig:models}, \myref{fig:fig2}, \myref{fig:fig3}, \myref{fig:fig4}, \myref{fig:fig5}, \myref{fig:fig6}{}). We also implemented two other models with different growth laws, which did not affect the paper's general conclusions.}}
+
+\newcommand{\killingranges}[1]{
+\auth{The same issue has been raised by reviewer #1. The given range for the killing rate increase was an error; this had been taken from the previous paper \cite{Creemers2021}, where we had used the range 1-7 (indeed, not 0-7) in our experiments. In this paper, we would also encourage readers to consider values outside of this range (as long as they are not unphysiologically high). Likewise, the range 0-1 is simply the range of all possible growth rate declines.}
+
+\chng{
+In the new version, we no longer give ranges for these parameters (\mytref{tab:whichpars}, \mytref{tab:parvals}), as they are determined by fitting to the CA184-024 cohort (\lr{parfitexplain}), and the ranges have also been affected by our changing of the growth law from exponent 0.8 to 0.75 (see previous points).
+}
+}
+
+
+\begin{document}
+
+\section*{Response to Reviewers}
+
+In our point-by-point response below, we use the following conventions:
+
+\begin{itemize}
+\item \revr{Reviewer comments are typeset in gray italics.}
+\item \auth{Our response is typeset in normal font.}
+\item \chng{Descriptions of changes made to the manuscript are typeset in blue, with references to new or 
+revised text in the revised manuscript {\bfseries\color{red!70!black} typeset in red}.}
+\end{itemize}
+
+In the attached marked-up manuscript file, we have highlighted the key added or revsised parts of text that we refer to below. 
+
+\section*{Reviewer 1}
+
+\revr{This paper deals with a very interesting topic: the potential use of in-silico studies to guide clinical trial design of immunotherapy treatments. I liked a lot the style of the paper and fully agree with the insightful claims made by the authors in the introduction. I also agree with their conclusion that in silico trials may provide a fast and cheap approach to verify the robustness of biological assumptions underlying immunotherapy trials and help to scrutinize its design.
+
+That said I do not think Nature Communications is the right place for this paper. First of all other versions of the model (and a similar methodology) has been used in previous works by the same authors. Also, in-silico studies have been used recently in the literature to simulate the outcome (and suggest improvements) of treatments with either chemotherapy, tyrosine kinase inhibitors and anti-CTLA-4-antibodies and anti-PD-(L)1 antibodies. The authors intend to obtain general implications for immunotherapy treatments but in practice their model is used, if I understood it properly, to describe the response to ICI treatments. Immunotherapies are much more than ICI and include cell therapies, i.e. cancer vaccines, oncolytic viruses, CAR-T cells, NK-cells, bispecific antibodies and more. Many of these treatments have been described with mathematical models that are substantially different from the one proposed in this manuscript. As an example the response patterns, and the corresponding mathematical models, to CAR-T cell treatments in leukaemias have nothing to do with the "delayed" effect described in this paper for ICI. Thus, the model does not contain essentially new elements, the idea has been previously exploited by other authors and the implications may be restricted to specific immunotherapies. This does not mean that the manuscript is not interesting but that, when revised thoroughly, it would suit more a different type journal such as Scientific Reports, PLOS Computational Biology or Journal of Theoretical Biology.}
+
+\auth{We appreciate the frank and honest feedback. However, we feel there might have been a misunderstanding about our paper's intent. We agree and are aware that mathematical models have described many different types of immunotherapy treatments over the years; our manuscript used one specific model, which was not particularly novel from a mathematical point of view. Nevertheless, the primary concern of our manuscript is not how to develop mathematical models for specific immunotherapy treatments but how to \emph{use} such models fruitfully for clinical trial design purposes. Therefore, we exploit model-based \emph{in silico} clinical trials to address specific substantive questions that clinical trialists need to answer, such as: which effect size measurements should be used to define the trial endpoint? Which randomization ratio should be used? How many interim analyses, if any, should be performed? We are not aware of previous work that addresses such questions using mechanistic models in the context of cancer immunotherapy, and we are reasonably certain that the clinical trials community and regulatory bodies are not using such models in practice at this time. This is the gap that our manuscript intends to bridge. Indeed, we feel that immunotherapy trial design could benefit enormously from the important work that the Mathematical Oncology community has done, since the approach is independent of the specific type of immunotherapy being modeled; it could be combined with any existing mathematical model as long as the model can generate realistic survival times and treatment effects at realistic levels of heterogeneity.
+
+We did not submit this paper to PLOS Computational Biology or the Journal of Theoretical Biology as its primary intention is to facilitate the adoption of models developed in Mathematical Oncology for the purpose of trial design. We believe an interdisciplinary journal such as \emph{Nature Communications} is a better fit for this goal, as doctors or trialists are unlikely to read specialty journals in mathematical or computational biology.}
+
+\chng{We fundamentally changed our approach in response to this comment to strongly emphasize existing contributions by the Mathematical Oncology community. Most importantly, also considering the reviewer's point 8 below, we implemented and analyzed two additional immunotherapy models by other authors (\lr{par:models}, \lr{par:m2}, \lr{par:m3}, \mytref{tab:whichpars}, \mytref{tab:parvals}, \myref{fig:fig2}) - alongside our own; indeed, we now feel this should be the default approach since it is crucial to understand how strongly trial design decisions depend on modeling assumptions. We hope these changes will make it evident that this paper is not about one specific mathematical model of one specific type of immunotherapy but about harnessing such models for the purpose of clinical trial design.}
+
+\revr{1.- The title should focus on the types of immunotherapy used in the manuscript.}
+
+\auth{As explained above, this manuscript introduces a general approach to trial design that should apply to all types of immunotherapy. Since the types of immunotherapy used in the manuscript are merely examples to illustrate the approach of exploiting in \emph{silico trials} in the trial design process, we deliberately chose to refrain our focus from the different treatments to prevent distracting the readership with a therapy-oriented view. However, we agree that the impression that our approach is restricted to one specific model or one specific type of immunotherapy should be avoided.}
+
+\chng{
+We have implemented a further mathematical model by Bekker \emph{et al.}\cite{Bekker2022} (\lr{par:models}, \lr{par:m3}), which according to the authors, can be used to model the effects of cytotoxic treatments, cell-based immunotherapies, and ICI. 
+}
+
+\revr{2.- The exponent 4/5 in Eq. (1) does not seem natural to me. Different exponents have been used in the literature such as the 3/4 (the West-Brown-Enquist universal growth law, doi: doi.org/10.1038/35098076) that has been reported to describe tumor growth in-vitro and in some animal models (see e.g. doi:10.1016/S0022-5193(03)00221-2) . An exponent 1 is the classical exponential growth model. Exponents larger than one have been found in untreated human tumors as a result of evolutionary dynamics within heterogeneous tumors (doi: 10.1038/s41567-020-0978-6). But why 4/5?}
+
+\exponent{2}
+
+
+
+\revr{3.- There are many models of tumor-immune dynamics. It would be convenient to place the model with the state of the art in the field.}
+
+\chng{We have added a paragraph to the discussion section emphasizing more clearly the rich literature on mathematical models of tumor-immune dynamics, including references to several reviews (\lr{par:modeldiscuss}).}
+
+\revr{4.- Tumor growth rate decline is not explained mathematically (or written explicitly in the model equations). Why? The explanation in the text is not precise enough. Moreover at that stage it is not clear why tumor growth rate should decline at all (see again comment 2 for untreated tumors), thus it seems to me that tumor growth rate decline is an effective way of accounting for the effect of treatments.}
+
+\auth{We used this growth rate decline to increase heterogeneity in our predicted survival times. It felt like a natural assumption that the growth rate does not remain constant over time, but we agree with the criticism that this might implement a treatment effect by proxy.}
+
+\chng{We removed these parameters from our model (now model M1), which did not affect the conclusions of our paper.} 
+
+\revr{5.- The idea of taking a publicly available dataset of patients with advanced lung cancer from the North
+Central Cancer Treatment Group (NCCTG) and regarding the survival times of these patients as if they
+were untreated is not realistic since those patients would probably be heavily treated.}
+
+\untreated{}
+
+\revr{6.- Some references supporting the choices for the size at which common malignancies are diagnosed and the lethal tumor burden are necessary.}
+
+\chng{We have added references to the size of a tumor at diagnosis (\lro{parthresholds:refs}). The lethal tumor burden initially used in our model was a simple approximation; this varies widely between patients. Therefore, we now treat the lethal tumor burden as a random variable that spans across one order of magnitude (\lr{parthresholds}). Our conclusions are unaffected by this change.}
+
+\revr{7.- The authors claim that immune checkpoint inhibitors increase the killing rate of cytotoxic T cells by a multiplication factor: 0-7. I guess they want to mean 1-7. But why 1-7? Please provide a reference.}
+
+\killingranges{2}
+
+\revr{8.- The fact that the model is able to describe qualitatively the results of the trial (mean and risks) could be a result of the very many parameters present in the model equations (plus the growth rate decay parameters) and not a reflection of the model ability to capture the tumor's biology. Would other (e.g. simpler) models available in the literature fit also the data? I have seen often how a biologically wrong model fits a dataset just because of it having a sufficiently high number of degrees of freedom. Would different models lead to similar results?}
+
+\auth{
+It is, of course, true that wrong models can still fit data, especially if they have many parameters. In our case, we do not fit that many parameters to the data shown in Figure 3; all model parameters except for the tumor growth rate and the treatment effect sizes are fixed to their biologically motivated values given in the previous paper and were not fitted to the trial data. This means that the number of parameters fitted ranges from 3-5, depending on the dataset. However, we were intrigued by the reviewer's question about whether other models would lead to similar results.
+}
+
+\chng{
+As mentioned in response to point 1 above, we have implemented two additional models of tumor-immune dynamics \cite{Tsur2020,Bekker2022} (\lr{par:models}, \lr{par:m2}, \lr{par:m3}). Although there are differences in how well these models fit existing trial data despite the same number of parameters being fitted (\myref{fig:fig2}{},\myref{fig:fits_m2_m3}{}), the agreement between the models is remarkable when predicting the aspects of the survival curves most relevant for trial design (\lr{parpoweranalysisagreement},\myref{fig:fig4}{},\mysupp{fig:pwr_m2_m3}{}). Furthermore, these new analyses illustrate that the model predictions relevant to trial design do not necessarily depend strongly on model structure, number of parameters, or quality of initial fit.
+}
+
+\section*{Reviewer 2}
+
+\revr{Creemers and colleagues present a very interesting mathematical oncology manuscript that simulates cancer immunotherapy trials with the goal to inform clinical trial design. The article is well written and of high interest and importance to the fields of cancer biology, immunology, clinical oncology, and mathematical biology. The topic is well defined and the results intriguing. To fully evaluate the potential and impact of the work, I have several questions or concerns that should be addressed.}
+
+\revr{The model without treatment is calibrated to advanced lung cancer treatment NCCTG data as if those were untreated patients (p6, l180f). This makes the model calibration incorrect.}
+
+\untreated{}
+
+\revr{The mathematical model is based on a previous publication (Ref. 27). In that work, the model is not calibrated and validated to any time-resolved data to evaluate dynamics and define predictive power.
+Of particular interest is the power of 4/5 in the growth term, which is explained in the original work as large parts of the tumor being necrotic. However, in the interaction terms, the variable T is not scaled to account for necrosis, which may severely overestimate the impact of the interactions.}
+
+
+\auth{We do not intend to claim that the model(s) accurately predict(s) specific treatments coming from time-resolved data. The time-resolved kinetics will likely be very different across clinical immunotherapy trials owing to differences in patient populations, the standard of care, inclusion criteria, and, most importantly, the specific cancer being treated. Instead, the model(s) aim to generate a (wide) range of plausible trial outcome scenarios to scrutinize the trial design for potential issues. Indeed, given that a wide range of exponents is used to model tumor growth \cite{Murphy2016}, it would be good if the \emph{in silico} trial design would scrutinize several of these.}
+
+\chng{We changed the exponent to 3/4 and re-did all analyses to illustrate that these choices do not affect our conclusions. See also the related answer to reviewer 1. The impact of interactions is also controlled by the parameter $\xi$. We use lower values of $\xi$ than other models that do not work with slowing tumor growth; we now discuss this (\lr{sentkilling}, \mytref{tab:parvals}). We think this has also become clearer by including the other two models and showing that the impact of the immune system is comparable (\myref{fig:models}).}
+
+\revr{The functional form of the effect of the different therapies is not included, and how the parameters were fitted and what values they have needs to be discussed.}
+
+\chng{We have explicitly specified that therapies are implemented by changing a model parameter to a different value for a set amount of time
+(\lr{partreatmentsim}). In our new version, we use a more straightforward fitting method, Approximate Bayesian Computation (\lr{parfitabc}), and we make clear that we fit only a small subset of the parameters to the data (\lr{parfitexplain},\mytref{tab:parfits}).}
+
+\revr{The default values or ranges of all parameters need to be justified. Activated T~cell production rate of $p_S=1$ cell per day and migration rate of $m_S=1$ cell per day sound very low.}
+
+\auth{We thank the reviewer for checking this so carefully. Unfortunately, the units of several of our parameters in Table~1 were incorrect, which may have led to a misunderstanding. The value $p_s=1$ means that each T~cell takes 1 day for one round of proliferation and 1 day to move from the lymph node to the target site; these values match current immunological knowledge.}
+
+\chng{We have corrected the units (\mytref{tab:whichpars}). In addition, we added a new paragraph to the results section that describes in much more detail how the parameters of each model were set (\lr{parparameters}). The value of $m_S$ in M1 is also discussed in \lr{parparametermigration}.}
+
+\revr{The introduction of Delta rho and $\rho_\delta$ are unorthodox to simulate a deceleration of tumor growth. This needs more motivation, especially with the exponent in the growth term already accounting for deceleration.}
+
+\chng{We have removed these parameters. We now keep $\rho$ constant throughout, except when it is affected by therapy. See also related points by reviewer 1.}
+
+\revr{Immune checkpoint inhibitors increase the killing rate by a multiplication factor of 0-7. Should this be 1-7? How were ranges 0-7 and 0-1 for chemotherapy chosen?}
+
+\killingranges{1}
+
+\revr{It is unclear what eqn. 2 is in the model. It is not discussed, and only serves as a sink of activated T cells. Can the exponential decay not be added to Eq. 3 with similar effect?}
+
+\auth{Our model distinguishes between T~cells in the lymph node ($N,S$) and T~cells at the tumor site ($I$) based on our understanding of antitumoral T~cell immune responses \cite{Creemers2021}. This leads to a delay effect where activated T~cells travel to the tumor site before exerting their effect. Indeed, this could probably be simplified at the current parameterization while giving similar predictions. The other two models implemented in the revised manuscript do not make this distinction.}
+
+\chng{In the revised manuscript, we now explain the difference between the $I$ and $N/S$ populations of T~cells and mention that the model could be simplified if desired (see \lr{methodsmodels}, especially \lr{parparametermigration}).}
+
+\revr{
+Large parts of the results should be methods, or are repeats from introduction and methods and should be removed.
+}
+
+
+\auth{Although we are unsure about which parts of the results the reviewer was referring to, we suspect they might refer to the initial part of the results section, where we explained our model.}
+
+\chng{This part and the Methods section have been rewritten in the revised version (see especially \lr{par:models} and \lr{methodsmodels}). Our general goal was to provide an easily accessible description of each model in the main manuscript text, with a more formal mathematical definition in the Methods. We feel that this is justified, given our use of multiple models in the manuscript. We have also added a new Figure showing simulation results from each model (\myref{fig:models}).}
+
+\revr{
+P11 l297. what are “reasonably corresponding risk tables”. Are there statistical measurements to evaluate goodness of fit?}
+
+\chng{
+We changed how we fit the models to the data in the revision. We now use Approximate Bayesian Computation (ABC), with the root mean square difference between survival curves as a measurement of fit (\lr{parfitabc}). We are not comparing the risk tables statistically. Therefore, we have removed this statement from the revision.
+}
+
+\revr{
+Figure 3 B has different dynamics than figure 2, where curves separate after 4 months. Unclear why this is different here.
+}
+
+\auth{
+Figure 2 shows well-fitting runs of each model to each specific dataset, as generated during ABC (see the response to the previous point), whereas Figure 3 (now Figure 4 in the new version) shows prediction based on these fits on new types of immunotherapy.
+}
+
+\chng{
+We have recreated \myref{fig:fig3}{} and explain the difference to \myref{fig:fig2}{} more explicitly and hopefully more clearly (\lr{sentfitca},\lr{parfitabc}).}
+
+\revr{
+Figure 3C+E labels appear to be messed up and do not enable evaluation of the results.
+}
+
+\chng{We fixed this issue in the new version (\myref{fig:fig3}{}).}
+
+
+\section*{Reviewer 3}
+
+\revr{The manuscript is well written and interesting, one of the clearer and more accessible manuscripts I have read on this area. I have a few questions.
+
+1. The authors state "Since a larger tumor mass is generally more immunogenic…" Do they have any data to support this supposition? If this is not correct how would that affect their model(s). In general more bulky advanced disease is a poor prognostic factor with both immunotherapy and chemotherapy and recently adjuvant IO therapy (in the absence of any visible tumor) has shown efficacy across several solid tumors in phase 3 trials.}
+
+We agree that this was poorly phrased. Indeed, in our previous work \cite{Creemers2021}, we have argued that tumor size (or growth rate) on its own is a poor prognostic factor since the ultimate immunogenicity also depends on many other parameters. In our model, small tumors (say, of approximately $10^5$ cells) lead to more antigen presentation than microscopic tumors (say, containing only a dozen cells). As the tumor grows, antigen presentation saturates. The immunogenicity itself is controlled by other model parameters (such as the killing rate) because we do not think that tumor size alone dictates the immune response.
+
+\chng{We have rephrased this sentence to be more precise and removed the reference to immunogenicity (\lr{senttumorscale}).}
+
+\revr{2. They state "As an illustrative example, we took a publicly available dataset of patients with advanced lung cancer from the North Central Cancer Treatment Group (NCCTG) and regarded the survival times of these patients as if they were untreated."
+– I am not familar with this specific cohort however it is doubtful whether they had no antineoplastic treatment assuming the cohort is from the last 20 years the majority (perhaps nearly all) would have received chemotherapy, targeted therapy or perhaps even immunotherapy. Given the authors have used this as model fitting cohort how does the fact this cohort was not untreated affect their other analyses?
+If a truly untreated cohort is needed perhaps the placebo group in phase 3 trials in the 2nd or 3rd line setting could be used?}
+
+\auth{Since our model already fitted this cohort without assuming a treatment effect, we had regarded it as untreated in the paper to avoid complicating things. We regret the confusion this has caused; see also related comments by other reviewers.}
+
+\chng{We have now included a chemotherapy treatment effect in our fit of this cohort (\lr{parfitexplain}), and have switched to using the more recent CA184-024 data as a basis for our predictions (\lr{sentfitca}). This allows us to estimate what the corresponding untreated cohort would look like by setting the treatment effect back to 0 (placebo arms in \myref{fig:fig3}{}, \mysupp{fig:chemotherapy_prophaz}{}, \mysupp{fig:pred_m2}{}, and \mysupp{fig:pred_m3}{}). Despite all these changes, the general conclusions of the paper remained the same.}
+
+\revr{Can authors explain why 2 year OS was chosen as the endpoint rather than median OS or 5 year survival?}
+
+\auth{We acknowledge that the rationale for the endpoint selection was lacking in our manuscript. In general, Overall Survival is regarded as the ‘gold standard’ primary clinical endpoint in oncology trials \cite{pmid33948349}. The 2-year OS was selected as a primary endpoint for two reasons. First, in contrast to the median OS, the 2-year OS is fixed in time, making the endpoint independent of the survival rate and more convenient for trial planning. Second, while long-term overall survival rates are insightful, a 5-year overall survival endpoint would be too long to serve as a primary endpoint from an ethical and marketing perspective. Therefore, we selected the 2-year OS endpoint to meet the robust 5-year overall survival and surrogate endpoints as the progression-free survival or time-to-progression in the middle.}
+
+\chng{We added a brief explanation of this choice with some motivating references (\lr{sentfollowup}).}
+
+\section*{Reviewer 4}
+
+\revr{This manuscript states that the immunotherapy-derived survival patterns, such as delayed curve separation and plateauing curve of the treatment arm, arise naturally due to the biological interactions in the tumor environment and thus proposes the in silico trial design strategy, which is capable of translating these biological interactions into survival kinetics, to improve the cancer immunotherapy trial designs. Although this work discusses an important question of interest and develops a potentially useful tool for trial designs provided that the model assumptions can be validated, it has some critical concerns that need to be dressed.
+
+1. The authors claim that an in silico immunotherapy trial is based on clear-cut biological
+assumptions and provides an intuitive means to predict risk profiles and treatment efficacy. Hence, the in silico trials could equip researchers with a tool to verify trial designs and analysis strategies of upcoming trials before the trials execution. Under this context, the validity of the biological assumptions used to build the ODE model and the choice of the model parameters such as the tumor growth rate, growth rate decline and decline decay rate, becomes critical to the performance of the \emph{in silico} trial. Although the authors also show that the simulations replicate late-stage immunotherapy or combination trials realistically and capture their typical survival kinetics, the verification is only based on a limited number of case studies, and is difficult to capture a wide spectrum of the realistic scenarios that may arise.}
+
+\auth{We thank the reviewer for this vital comment, which prompted us to rethink how we framed our contribution. We did not intend to claim that \emph{in silico} trials would be able to accurately predict, at a quantitative level, each individual patient's response to a novel treatment. We instead wanted to show how \emph{in silico} trials could be used to generate principled predictions about a range of \emph{possible} outcomes that could be expected. Indeed, we would argue that investigators should base their choices on the predictions of multiple models -- there are many choices available in the Mathematical Oncology literature -- that may differ from each other. Such differences arise due to choices in modeling assumptions and parameter uncertainty, which will be inevitable. Nevertheless, we feel that this way of embracing structural uncertainty and working with it is better than expecting a single model to perfectly predict the results of novel trials -- if such a model were available, we would perhaps not need to do the trial at all.}
+
+\chng{In our revised manuscript, we use three different models instead of just one (\myref{fig:models}{},\lr{par:models}) and show explicitly that they can generate different quantitative predictions (\myref{fig:fig3}{}, \mysupp{fig:chemotherapy_prophaz}{}, \mysupp{fig:pred_m2}{}, and \mysupp{fig:pred_m3}{}). We also show that the models often agree on essential qualitative aspects of the predicted survival curves despite those differences. For example, all three models predict a delayed curve separation in a chemoimmunotherapy vs. immunotherapy trial (\lr{sentmodeldiff}, \myref{fig:fig3}{},  \mysupp{fig:pred_m2}{}, and \mysupp{fig:pred_m3}{}). We have also carefully revised the text to rephrase statements that could be interpreted as claims that we can accurately predict the results of a novel trial on a quantitative level.}
+
+\revr{a. Page 10, Lines 281-285, the authors illustrate the use of the \emph{in silico} approach by fitting the simulation to three different datasets. Can the authors use one dataset to tune the model parameters and then use the other two datasets to validate the goodness of the fit of the in silico model? Or can the authors tune the model parameters based on the three datasets and validate its prediction power by applying the model in other cancer immunotherapy studies already completed? By doing so, we can avoid the risk of model over-fitting and evaluate the a priori prediction power of the in silico model.}
+
+\auth{We agree that the analysis suggested by the reviewer would be helpful if our goal were to predict the results of clinical trials quantitatively. However, as argued in response to the previous point, this is not our intention. We do not aim to predict survival curves accurately, but we wish to predict essential qualitative features of the curves. Further, we doubt that the baseline patient populations are necessarily comparable between different clinical trials, so we would also need to conduct matching of model parameters on patient covariates to be able to conduct such an analysis.
+}
+
+\chng{
+In our revision, we have fitted three models to the same dataset (\myref{fig:fig2}{},\mysupp{fig:fits_m2_m3}{}) and generated predictions about novel immunotherapies from these fits (\myref{fig:fig3}{}, \mysupp{fig:chemotherapy_prophaz}{}, \mysupp{fig:pred_m2}{}, and \mysupp{fig:pred_m3}{}). This immediately shows that the quantitative predictions differ and are model-specific. However, as we emphasize much more strongly now, the qualitative aspects of the survival curves -- the important characteristics of designing the trial -- are comparable (\lr{parpoweranalysis} and especially \lr{parpoweranalysisagreement}). Throughout the entire text, we have also worked to clarify that our goal is not an accurate quantitative prediction of each patient's outcome, which we do not think is realistic for the time being.
+}
+
+\revr{
+2. Page 12-13, Lines 351-360, the authors claim that the flexibility of in silico trials lies in their ability to incorporate complex treatment regimens and uses an example to support the claim. In this example, the investigator would be interested in estimating the survival curves and underlying hazards ratio over time under the scenarios of 3D and 3E, where a crossing- survival-curves pattern or a temporary curve separation pattern are manifested. It would be interesting to know, if the investigator uses the in silico model to predict the trial outcome and survival patterns, how should they estimate or report the hazards ratio under such
+complex survival patterns (3D or 3E) after the data is collected? Would the trial report the true hazards ratio used to simulate the in silico model or the hazard ratio estimated by the Cox proportional hazards model?
+}
+
+\auth{
+Indeed, the occurrence of crossing survival curves presents a challenge for quantifying the treatment effect. We would argue that in cases where survival curves cross, the hazards ratio should not be used as an effect size, but which effect size would be appropriate is a difficult question and its answer would depend on the specific clinical considerations at hand. To our knowledge, this is an active area of research in the field of trial design, and we consider this to extend beyond the scope of this mansucript. The reviewer's suggestion to fit an \emph{in silico} model to such data and use the estimated treatment effect as the effect size is very interesting, but it has the drawback that its interpretation would be model-dependent, which may not be desirable. However, a related case arises when treatment effects are transient, i.e., when the separation of survival curves is only temporary.
+}
+
+\chng{In the revised manuscript, we now explicitly discuss the issue of temporarily separating survival curves and how the hazards ratio can be used to quantify the treatment effect in such a case, even if the proportional hazards assumption is not fully met (\lr{parpoweranalysis}, especially \lr{parpoweranalysishazard}).}
+
+\revr{
+3. Page 14, Line 273-393, the authors compared the power of two testing procedures, the log- rank test versus Pearson’s Chi-square test. I don’t think the two testing procedures are comparable, as they assume different primary endpoints; the log-rank test assumes the time- to-event endpoint and uses hazard ratio to measure the treatment effect, whereas the Pearson’s Chi-square test assumes the responder rate endpoint and uses the responder rate to quantify the treatment effect. Hence, it is not appropriate to evaluate the strength of different treatment effect measures under different primary endpoint.
+}
+
+
+\auth{We agree that this section was misleading: the power is not directly comparable between the two methods, as they measure different things. As the reviewer writes, the choice of effect size to measure the treatment effect leads to the observed differences in power.}
+
+\chng{We have revised this section of the results to avoid this misunderstanding and make clear that the comparison is between effect sizes, not between statistical tests (\lr{parpoweranalysis}, \myref{fig:fig4}{}). We hope the revised version clarifies that we intend to illustrate how \emph{in silico} trials can be used to choose an appropriate effect size.}
+
+\revr{
+4. Line 166-167, the authors state that ``Once a cancer reaches a diagnosis threshold, immune checkpoint inhibitors (ICI) increase the killing rate of cytotoxic T cells''. Does the assumption reflect the indirect mechanism of action of ICI, so that the treatment effect would be manifested after a lag period rather than immediately?
+}
+
+\auth{This appears to be a misunderstanding. The effect of ICI can only start after diagnosis simply because the patient's treatment only starts after diagnosis. After the start of the treatment, there is a further delay until the treatment effect is manifested in the survival curves because the treatment works only in a subset of the patients; in other words, patients that would die rapidly after diagnosis are unlikely to benefit from the treatment, and so the survival curves do not differ much between the arms at early times.}
+
+\chng{We have rephrased the sentence and expanded on how we implement treatment in our model (\lr{partreatmentsim}).}
+
+\revr{Minor comments:
+
+1. Line 134, not all parameters in the equation systems are clearly defined.}
+
+\chng{In the new manuscript, the Methods section has been completely rewritten (\lr{methodsmodels}). We defined all parameters clearly and added two new tables explaining the parameters and their default values (\mytref{tab:whichpars}, \mytref{tab:parvals}).}
+
+\revr{2. ``hazard ratio'' should be revised to ``hazards ratio'' throughout the manuscript.}
+
+\auth{We agree that ``hazards ratio'' would be more correct from a purely grammatical point of view, but since ``hazard ratio'' is used far more commonly in the literature, we would like to keep this wording to avoid confusion.}
+
+\revr{3. Line 383, the word “underestimation” should be “overestimation”, as the PHA-dependent methods would lead to an underpowered study when the proportional hazards assumption no longer holds.}
+
+\chng{This entire section has been rewritten in response to point 3 above (\lr{parpoweranalysis}).}
+
+\bibliographystyle{unsrtm}
+\bibliography{ms}
+
+\end{document}
+
