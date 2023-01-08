@@ -1,0 +1,13 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.swp
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.xdv
+*.bbl
+*.blg
+*.out

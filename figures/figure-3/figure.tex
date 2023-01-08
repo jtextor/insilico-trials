@@ -1,0 +1,95 @@
+\documentclass[tikz]{standalone}
+
+
+\pagestyle{empty}
+
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue Light}
+
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Font settings:
+%\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+
+\begin{document}
+
+\footnotesize
+
+%---------------------------------FIGURE 1: Microsimulation---------------------------------
+
+\begin{tikzpicture}[anchor=north west]
+%\filldraw[white] (0,0) rectangle (17.92445,-0.1);
+%\draw[red] (0,0) rectangle (12,-0.1);
+
+% --- Row 1 ---
+
+\begin{scope}[xshift = 0cm, yshift = 0cm]
+  % Plots of Survival data and Fitted Model on survival data
+  \node[anchor = north west] at (0.5,-0.5) {\includegraphics{plots/a1.pdf}};
+  \node[anchor = north west] at (6,-0.5) {\includegraphics{plots/a2.pdf}};
+  \node[anchor = north west] at (11.5,-0.5) {\includegraphics{plots/a3.pdf}};
+  \node[black] at (0.2,-0.1) {\figf  A};
+  \node[black] at (3,-0.1) {\figf  NCCTG data};
+  \node[black] at (8.5,-0.1) {\figf  CA184-024 trial};
+  \node[black] at (13.5,-0.1) {\figf  CheckMate 066 trial};
+\end{scope}
+
+
+\begin{scope}[xshift = 0cm, yshift = -5.5cm]
+  % Plots of Survival data and Fitted Model on survival data
+  \node[anchor = north west] at (0.5,-0.5) {\includegraphics{plots/b1.pdf}};
+  \node[anchor = north west] at (6,-0.5) {\includegraphics{plots/b2.pdf}};
+  \node[anchor = north west] at (11.5,-0.5) {\includegraphics{plots/b3.pdf}};
+  \node[black] at (0.2,-0.1) {\figf  B};
+  \draw[black, thin] (0.76,-0.3) -- (17,-0.3);
+  \node[black,fill=white] at (8.75,-0.1) {\figf \emph{In silico} trials (M1)};
+\end{scope}
+
+
+
+
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[anchor=north west]
+
+\begin{scope}[xshift = 0cm, yshift = 0cm]
+  % Plots of Survival data and Fitted Model on survival data
+  \node[anchor = north west] at (0.5,-0.5) {\includegraphics{plots/a1.pdf}};
+  \node[anchor = north west] at (6,-0.5) {\includegraphics{plots/a2.pdf}};
+  \node[anchor = north west] at (11.5,-0.5) {\includegraphics{plots/a3.pdf}};
+  \node[black] at (0.2,-0.1) {\figf  A};
+  \node[black] at (3,-0.1) {\figf  NCCTG data};
+  \node[black] at (8.5,-0.1) {\figf  CA184-024 trial};
+  \node[black] at (13.5,-0.1) {\figf  CheckMate 066 trial};
+\end{scope}
+
+
+\begin{scope}[xshift = 0cm, yshift = -5.5cm]
+  % Plots of Survival data and Fitted Model on survival data
+  \node[anchor = north west] at (0.5,-0.5) {\includegraphics{plots/c1.pdf}};
+  \node[anchor = north west] at (6,-0.5) {\includegraphics{plots/c2.pdf}};
+  \node[anchor = north west] at (11.5,-0.5) {\includegraphics{plots/c3.pdf}};
+  \node[black] at (0.2,-0.1) {\figf  B};
+  \draw[black, thin] (0.76,-0.3) -- (17,-0.3);
+  \node[black,fill=white] at (8.75,-0.1) {\figf \emph{In silico} trials (M2)};
+\end{scope}
+
+\begin{scope}[xshift = 0cm, yshift = -11cm]
+  % Plots of Survival data and Fitted Model on survival data
+  \node[anchor = north west] at (0.5,-0.5) {\includegraphics{plots/d1.pdf}};
+  \node[anchor = north west] at (6,-0.5) {\includegraphics{plots/d2.pdf}};
+  \node[anchor = north west] at (11.5,-0.5) {\includegraphics{plots/d3.pdf}};
+  \node[black] at (0.2,-0.1) {\figf  C};
+  \draw[black, thin] (0.76,-0.3) -- (17,-0.3);
+  \node[black,fill=white] at (8.75,-0.1) {\figf \emph{In silico} trials (M3)};
+\end{scope}
+
+
+\end{tikzpicture}
+
+\end{document}

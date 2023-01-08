@@ -1,0 +1,69 @@
+\documentclass[tikz]{standalone}
+
+
+\pagestyle{empty}
+
+\usepackage{fontspec}
+\IfFontExistsTF{Helvetica Neue Light}{
+\setmainfont{Helvetica Neue Light}
+}{
+}
+
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Font settings:
+%\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+
+
+\newcommand{\panellabel}[2]{
+\node [inner sep=1pt,anchor=north west,align=center] at (#2) {\figf #1};
+}
+\newcommand{\panel}[4][]{
+\node [inner sep=1pt,anchor=north west,align=center] (p#2) at (#3) {#4};
+\panellabel{#1#2}{#3};
+}
+
+\begin{document}
+
+\footnotesize
+
+\begin{tikzpicture}[yscale=3.3]
+\panel{A}{0,0}{\includegraphics{plots/chemo-placebo.pdf}}
+\panel[\hspace{2mm}]{B}{5.667,0}{\includegraphics{plots/chemo-placebo-m2.pdf}}
+\panel[\hspace{2mm}]{C}{11.334,0}{\includegraphics{plots/chemo-placebo-m3.pdf}}
+%\panel{A}{0,0}{\includegraphics{plots/insilico-trials.pdf}}
+%\panel{B}{0,-1}{\includegraphics[page=2]{plots/insilico-trials.pdf}}
+\panel{D}{0,-1}{\includegraphics[page=2]{plots/insilico-trials.pdf}}
+\panel{E}{0,-2}{\includegraphics[page=3]{plots/insilico-trials.pdf}}
+\panel{F}{0,-3}{\includegraphics[page=4]{plots/insilico-trials.pdf}}
+
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[yscale=3.3]
+
+%\panel{A}{0,0}{\includegraphics{plots/insilico-trials-m2.pdf}}
+%\panel{B}{0,-1}{\includegraphics[page=2]{plots/insilico-trials.pdf}}
+\panel{A}{0,-1}{\includegraphics[page=2]{plots/insilico-trials-m2.pdf}}
+\panel{B}{0,-2}{\includegraphics[page=3]{plots/insilico-trials-m2.pdf}}
+\panel{C}{0,-3}{\includegraphics[page=4]{plots/insilico-trials-m2.pdf}}
+
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[yscale=3.3]
+
+%\panel{A}{0,0}{\includegraphics{plots/insilico-trials-m3.pdf}}
+%\panel{B}{0,-1}{\includegraphics[page=2]{plots/insilico-trials.pdf}}
+\panel{A}{0,-1}{\includegraphics[page=2]{plots/insilico-trials-m3.pdf}}
+\panel{B}{0,-2}{\includegraphics[page=3]{plots/insilico-trials-m3.pdf}}
+\panel{C}{0,-3}{\includegraphics[page=4]{plots/insilico-trials-m3.pdf}}
+
+\end{tikzpicture}
+
+
+\end{document}
