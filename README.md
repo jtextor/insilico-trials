@@ -1,4 +1,4 @@
-# Simulation model for cancer immunotherapy and chemotherapy trials 
+# Simulation models for cancer immunotherapy and chemotherapy trials 
 
 This repository contains code and data related to the following manuscript: 
 
