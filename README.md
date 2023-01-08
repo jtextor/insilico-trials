@@ -112,49 +112,6 @@ plot( y[,1], y[,2]/1e6, log="y", type="l", col="orange", xlab="", ylab="tumor bu
 ```
 
 
-
-//' 
-//' # Model M2
-//' # Get survival when no treatment is implemented using the default model parameters
-//' survival <- get_survival_cpp_M2()
-//' 
-//' # Get survival when partial response to immune therapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M2(RAISE_KILLING=14000)
-//' 
-//' # Get survival when complete response to immune therapy is achieved  
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M2(RAISE_KILLING=14500)
-//' 
-//' # Get survival when partial response to chemotherapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M2(LOWER_GROWTH_=0.5)
-//' 
-//' # Get survival when complete response to chemotherapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M2(LOWER_GROWTH_=0.01)
-//' 
-//' # Model M3
-//' # Get survival when no treatment is implemented using the default model parameters
-//' survival <- get_survival_cpp_M3()
-//' 
-//' # Get survival when partial response to immune therapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M3(RAISE_KILLING=10)
-//' 
-//' # Get survival when complete response to immune therapy is achieved  
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M3(RAISE_KILLING=17)
-//' 
-//' # Get survival when partial response to chemotherapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M3(LOWER_GROWTH=0.8)
-//' 
-//' # Get survival when complete response to chemotherapy is achieved 
-//' # using the default model parameters
-//' survival <- get_survival_cpp_M3(LOWER_GROWTH=0.3)
-
-
 ## List of R packages
 
  - bshazard (version 1.1)
