@@ -1,13 +1,17 @@
 Package: TumorImmuneModels
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Simulations of Tumor Development and Immune Response
 Version: 1.0
-Date: 2022-11-02
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one
-        or more full sentences.
-License: GPL (>= 2)
+Date: 2023-03-17
+Author: Johannes Textor, Gijs Schröder, Evgenia Martynova
+Maintainer: Johannes Textor <johannes.textor@gmx.de>
+Description: Provides implemenations of three ordinary differential equation (ODE) models to 
+	simulate a growing tumor and a developing cytotoxic T cell response that attacks the tumor cells. Treatments
+	can be simulated by changing tumor growth and killing rate parameters upon reaching the diagnosis threshold.
+	Accompanies the ppaer published at <https://www.medrxiv.org/content/10.1101/2021.09.09.21263319v2>.
+License: BSD_2_clause + file LICENSE
 Imports: Rcpp (>= 1.0.9)
 LinkingTo: Rcpp, BH
 RoxygenNote: 7.2.1
+Encoding: UTF-8
+

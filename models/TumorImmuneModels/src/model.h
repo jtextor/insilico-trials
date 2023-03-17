@@ -12,9 +12,9 @@
  */
 
 
-#include "modelodes.hpp"
-#include "stopwatch.hpp"
-#include "util.hpp"
+#include "modelodes.h"
+#include "stopwatch.h"
+#include "util.h"
 
 
 // Namespace Mx contains classes for all three TumorImmuneModels.

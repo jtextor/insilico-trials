@@ -1,5 +1,5 @@
-#include "stopwatch.hpp"
-#include "util.hpp"
+#include "stopwatch.h"
+#include "util.h"
 
 
 namespace Mx {

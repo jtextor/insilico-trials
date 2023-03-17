@@ -1,6 +1,5 @@
-#include "model.hpp"
-#include "parameters.hpp"
-
+#include "model.h"
+#include "parameters.h"
 
 namespace Mx {
 

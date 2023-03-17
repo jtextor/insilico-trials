@@ -1,6 +1,6 @@
 #include <utility>
 
-#include "timeseries.hpp"
+#include "timeseries.h"
 
 
 Timeseries::Timeseries()

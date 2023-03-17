@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-#include "util.hpp"
+#include "util.h"
 
 
 // For code that applies to all three TumorImmuneModels.

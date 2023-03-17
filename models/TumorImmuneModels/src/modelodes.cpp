@@ -1,9 +1,9 @@
 #include <cmath>
 
-#include "modelodes.hpp"
-#include "parameters.hpp"
-#include "stopwatch.hpp"
-#include "util.hpp"
+#include "modelodes.h"
+#include "parameters.h"
+#include "stopwatch.h"
+#include "util.h"
 
 
 namespace M1 {
