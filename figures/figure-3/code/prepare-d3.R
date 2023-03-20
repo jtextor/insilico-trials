@@ -2,7 +2,7 @@
 library( survival )
 source("../tools.R")
 
-r <- readRDS("../model-fits/data/M3-nivo-xmin-draft.Rds")
+r <- readRDS("../model-fits/data/M3-nivo-xmin.Rds")
 .Random.seed <- attr(r,"seed")
 
 df1 <- data.frame( randomization="a_dtic", time=get_s_M3(N=210,mean=r[1], sd=r[2], lower_growth=r[3], 
