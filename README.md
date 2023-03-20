@@ -30,84 +30,41 @@ remotes::install_github("jtextor/insilico-trials/models/TumorImmuneModels")
 
 For the web-based version, visit the page https://computational-immunology.org/models/immunotherapy-trials/ and a demo simulation will immediately start running. To generate a study that shows a very clear immunotherapy effect, use the sliders to set the parameter "Growth Rate Mean" to 2.5 and "Immunotherapy effect" to 10 or higher. Note that these are stochastic simulations: re-running the simulations with the same parameters will generate different survival curves each time, due to the random variation in parameters. 
 
-For the R package, see the example below.
+For the R package, see the example below, which re-creates (a simplified version of) 
+Figure 3A in the paper.
 
 ```
 library( TumorImmuneModels )
-# Get survival when partial response to immune therapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M1(RAISE_KILLING=10)
 
-# Get survival when complete response to immune therapy is achieved  
-# using the default model parameters
-survival <- get_survival_cpp_M1(RAISE_KILLING=15)
+# Utility function to run simulation and get result in matrix format
+# with desired units
+getResultMatrix <- function( ... ){
+	# Simulate model M1 with given paramters and store result
+	r <- matrix(simulate_M1( ... ),byrow=TRUE,ncol=3,
+		dimnames=list(NULL,c("time","tumor cells","T cells")))
+	# Convert return time from days to months
+	r[,"time"] <- r[,"time"] / 30.44
+	# Express tumor burden in millions of cells
+	r[,"tumor cells"] <- r[,"tumor cells"] / 1e6
+	r
+}
 
-# Get survival when partial response to chemotherapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M1(LOWER_GROWTH=0.8)
+r <- getResultMatrix()
+# Plot tumor cells over time for period of 2 years
+plot(`tumor cells` ~ `time`, r, 
+	xlab="time (months)", ylab="tumor burden (million cells)",
+	log="y", xlim=c(0,24), type="l", ylim=c(1e2, 1e6) )
 
-# Get survival when complete response to chemotherapy is achieved  
-# using the default model parameters
-survival <- get_survival_cpp_M1(LOWER_GROWTH=0.19)
+# Now simulate with weak immunotherapy effect
+r <- getResultMatrix(RAISE_KILLING=10) 
+# Add line to graph
+lines( `tumor cells` ~ `time`, r, col="orange" )
 
-# Get survival when chemotherapy is followed by immune therapy  
-# using the default model parameters
-get_survival_cpp_M1(LOWER_GROWTH=0.5, CHEMO_DURATION=10, RAISE_KILLING=15, TREATMENT_DELAY=10, TREATMENT_DURATION=30)
+# Now simulate strong immunotherapy effect
+r <- getResultMatrix(RAISE_KILLING=19) 
+# Add line to graph
+lines( `tumor cells` ~ `time`, r, col="red" )
 
-# Model M2
-# Get survival when no treatment is implemented using the default model parameters
-survival <- get_survival_cpp_M2()
-
-# Get survival when partial response to immune therapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M2(RAISE_KILLING=14000)
-
-# Get survival when complete response to immune therapy is achieved  
-# using the default model parameters
-survival <- get_survival_cpp_M2(RAISE_KILLING=14500)
-
-# Get survival when partial response to chemotherapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M2(LOWER_GROWTH_=0.5)
-
-# Get survival when complete response to chemotherapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M2(LOWER_GROWTH_=0.01)
-
-# Model M3
-# Get survival when no treatment is implemented using the default model parameters
-survival <- get_survival_cpp_M3()
-
-# Get survival when partial response to immune therapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M3(RAISE_KILLING=10)
-
-# Get survival when complete response to immune therapy is achieved  
-# using the default model parameters
-survival <- get_survival_cpp_M3(RAISE_KILLING=17)
-
-# Get survival when partial response to chemotherapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M3(LOWER_GROWTH=0.8)
-
-# Get survival when complete response to chemotherapy is achieved 
-# using the default model parameters
-survival <- get_survival_cpp_M3(LOWER_GROWTH=0.3)
-
-# Simulates the disease trajectory when no treatment is implemented
-t_max <- 365 * 5 # five years
-y <- simulate_M1(t_max, 1, 1)
-y <- matrix(y, ncol=3, byrow=TRUE) # transform to extract time scale, tumor size and intramural T cells number
-# Visualize the disease course in a period shortly before treatment and until death
-tumor_size_start <- 1e8
-t_start <- which.max(y[,2] >= 1e8) - 1
-y <- y[-(1:t_start),]
-tumor_size_death <- 1e12
-y <- y[y[,2] <= tumor_size_death,] 
-day_in_month <- 30.4
-y[,1] <- (y[,1] - min(y[,1])) / 30.4
-# Plot the millions of tumor cells by months 
-plot( y[,1], y[,2]/1e6, log="y", type="l", col="orange", xlab="", ylab="tumor burden (million cells)")
 
 ```
 

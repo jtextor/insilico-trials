@@ -1,0 +1,86 @@
+<html>
+	<meta charset="utf-8">
+	<head>
+		<link rel="stylesheet" type="text/css" href="slider.css">
+	</head>
+	<h3 class="center"> <em> In silico </em> cancer trial simulation</h3>
+	<div id="my_dataviz", class="center"></div>
+	<div id="statistics", class="center"></div>
+	<br>
+	<table class="center">
+		<tr>
+			<th class="table_head_mean"> Mean Survival Placebo </th>
+			<th class="table_head_mean"> Mean Survival Treatment </th>
+		</tr>
+		<tr>
+			<td id="mean_survival_placebo"></td>
+			<td id="mean_survival_treatment"></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+
+	<table class="center" id="input_table">
+		<tr>
+			<th class="table_head"> Model </th>
+			<th class="table_head"> Growth Rate Mean </th>
+			<th class="table_head"> Growth Rate SD </th>
+			<th class="table_head"> Immunotherapy Effect </th>
+			<th class="table_head"> Chemotherapy Effect </th>
+			<th class="table_head"> No. of patients </th>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> <input type="number" id="R_mu_value" value=3 oninput="document.getElementById('R_mu').value=this.value"> </td>
+			<td> <input type="number" id="R_sigma_value"  value=1 oninput="document.getElementById('R_sigma').value=this.value"> </td>
+			<td> <input type="number" id="imm_effect_value" value=1 oninput="document.getElementById('raise_killing').value=this.value"> </td>
+			<td> <input type="number" id="chemo_effect_value" value=1 oninput="document.getElementById('chemo_effect').value=this.value"> </td>
+			<td> <input type="number" id="n_patients_value" value=100 oninput="document.getElementById('n_patients').value=this.value"> </td>
+		</tr>
+		<tr>
+			<td>
+				<select name="model" id="model">
+					<option value="model1"> Model 1 </option>
+					<option value="model2"> Model 2 </option>
+					<option value="model3"> Model 3 </option>
+				</select>
+			</td>
+			<td> <input type="range" class="center" name="R_mu" id=R_mu min="-20" max="20" value="3" step="0.01" oninput="document.getElementById('R_mu_value').value=this.value"> </td>
+			<td> <input type="range" class="center" name="R_sigma" id=R_sigma min="0" max="20" value="1" step="0.01"  oninput="document.getElementById('R_sigma_value').value=this.value"> </td>
+			<td> <input type="range" class="center" name="raise_killing" id=raise_killing min="1" max="20" value="1" step="0.01" oninput="document.getElementById('imm_effect_value').value=this.value"> </td>
+			<td> <input type="range" class="center" name="chemo_effect" id=chemo_effect min="0" max="1" value="1" step="0.01" oninput="document.getElementById('chemo_effect_value').value=this.value"> </td>
+			<td> <input type="range" class="center" name="n_patients" id=n_patients min="20" max="1000" value="100" step="1" oninput="document.getElementById('n_patients_value').value=this.value"> </td>
+		</tr>
+		<tr class="description_row">
+			<td class="description_txt"> Please refer <a href="https://www.medrxiv.org/content/10.1101/2021.09.09.21263319v2.full.pdf">Creemers et al 2022</a></td>
+			<td class="description_txt" colspan="2"> Growth rate mean (log scale), &mu; and standard deviation (log scale), &sigma;. Growth rates are sampled from Lognormal(&mu;, &sigma;<sup>2</sup>).</td>
+			<td class="description_txt"> Immunotherapy effect. Must be >= 1 </td>
+			<td class="description_txt"> Chemotherapy Effect. Must be <= 1 </td>
+			<td class="description_txt"> Number of patients in each of the placebo and treatment group in the simulation. </td>
+		</tr>
+
+	</table>
+	<br>
+	<br>
+	<table class="center">
+		<tr>
+			<td class="table_download">
+				<button type='button' name='rerun_sim' id='rerun_sim' class='buttons' onclick='rerun_sim()'> Rerun simulation </button>
+			</td>
+			<td class="table_download">
+				<button type='button' name='download_raw' id='download_raw' class='buttons' onclick="downloadBlob(survival_to_csv(death_times_treat, death_times_placebo), 'export_raw.csv', 'text/csv;charset=utf-8;')"> Download Raw Data </button>
+			</td>
+			<td class="table_download">
+				<button type='button' name='download_prop' id='download_prop' class='buttons' onclick="downloadBlob(km_to_csv(d1, d2), 'export_km.csv', 'text/csv;charset=utf-8;')"> Download KM Data </button>
+			</td>
+		</tr>
+	</table>
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script src="./model1.js"></script>
+	<script src="./model2.js"></script>
+	<script src="./model3.js"></script>
+	<script src="./utils.js"></script>
+	<script src="./constants.js"></script>
+	<script src="./plot.js"></script>
+	<script src="./download.js"></script>
+</html>
