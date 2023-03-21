@@ -1,5 +1,6 @@
 library(survminer)
 
+source("../settings.R")
 source("../theme.R")
 load("data/b3.Rdata")
 
@@ -10,8 +11,7 @@ df$time[df$time>24] <- 24
 
 res <- plot_2arm_nivo( fit, df )
 
-quartz( type="pdf", file="plots/b3.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
-par( family="sans" )
+pdf_out( file="plots/b3.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
 print( res, newpage=FALSE )
 dev.off()
 

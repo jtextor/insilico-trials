@@ -2,6 +2,7 @@ library(survminer)
 library(survival)
 library(dplyr)
 
+source("../settings.R")
 source("../theme.R")
 
 load("data/a2.Rdata")
@@ -33,8 +34,7 @@ res$plot <- res$plot +
   coord_cartesian(xlim = c(0, 24))
 
 
-quartz( type="pdf", file="plots/a2.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
-par( family="sans" )
+pdf_out( file="plots/a2.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
 survminer:::print.ggsurvplot( res, newpage=FALSE )
 dev.off()
 

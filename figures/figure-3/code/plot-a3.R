@@ -1,6 +1,7 @@
 library(survminer)
 library(dplyr)
 
+source("../settings.R")
 source("../theme.R")
 
 load("data/a3.Rdata")
@@ -30,8 +31,7 @@ res$plot <- res$plot +
   theme(axis.title.y = element_blank()) +
   coord_cartesian(xlim = c(0, 24))
 
-quartz( type="pdf", file="plots/a3.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
-par( family="sans" )
+pdf_out( file="plots/a3.pdf", width=5.5*0.3937, height=5*0.3937, pointsize=8 )
 print( res, newpage=FALSE )
 dev.off()
 
