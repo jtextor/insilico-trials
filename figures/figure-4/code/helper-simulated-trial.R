@@ -25,6 +25,9 @@ plt <- function( model="M1", rk_c = 1, rk_t=1, rk_t_delay = 0, lg_c = 1, lg_t = 
 
 	d <- rbind( d_control, d_treatment )
 
+	write.csv(d, file=gzfile(paste0("data/",model,"_",
+		gsub(" ","_",tolower(gsub("[^[:alnum:] ]", "", main))),".csv.gz")),row.names=FALSE)
+
 	fit <- survfit( Surv( time, status ) ~ treatment, d )
 
 	plot( fit, xaxt="n", yaxt="n", xlab=xlab, ylab="",

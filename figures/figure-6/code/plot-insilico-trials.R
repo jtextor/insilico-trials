@@ -30,14 +30,14 @@ pdf_out( file="plots/insilico-trials.pdf", width=7.5*0.3937, height=4*0.3937, po
 par( mar=c(3,3.5,1,4.5), mgp=c(1.8,.7,0), family="sans" )
 
 plt( results_chemo, xlab="" )
-legend( x=24, y=80, lty=1, col=rev(1:4), title="Study size", as.character( rev(c(100,200,400,800)) ), bty="n", xpd=TRUE,
+legend( x=24, y=80, lty=1, col=rev(1:4), title="Study size", as.character( 2*rev(c(50,100,200,400)) ), bty="n", xpd=TRUE,
 	 )
 
 plt( results_chemo_rr, xlab="", ylab="" )
 legend( x=22.5, y=80, lty=1, col=c(1,4,2,3), title="Randomization\nratio", c("1:1","3:2","2:1","3:1"), bty="n", xpd=TRUE)
 
 plt( results_immuno )
-legend( x=24, y=80, lty=1, col=rev(1:4), title="Study size", as.character( rev(c(200,400,800,1200)) ), bty="n", xpd=TRUE,
+legend( x=24, y=80, lty=1, col=rev(1:4), title="Study size", as.character( 2*rev(c(100,200,400,600)) ), bty="n", xpd=TRUE,
 	 )
 
 plt( results_immuno_rr, ylab="" )
