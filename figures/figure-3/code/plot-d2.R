@@ -1,7 +1,7 @@
 
 library(survminer)
 
-source("../tools.R")
+source("../settings.R")
 source("../theme.R")
 load("data/d2.Rdata")
 

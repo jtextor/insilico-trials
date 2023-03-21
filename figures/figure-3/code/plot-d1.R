@@ -1,6 +1,6 @@
 library( survminer )
 
-source("../tools.R")
+source("../settings.R")
 source("../theme.R")
 load("data/d1.Rdata")
 
