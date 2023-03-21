@@ -258,5 +258,15 @@ mk_dev_1arm <- function( ref_data, simulator, plot=FALSE ){
 }
 
 
+touch <- function( filename ){
+	if( !file.exists( filename ) ){
+		cat(NULL,file=filename)
+	} else {
+		R.utils::touchFile(filename) 
+	}
+}
+
+
+
 ## initialize RNG
 if(!exists(".Random.seed")) set.seed(NULL)

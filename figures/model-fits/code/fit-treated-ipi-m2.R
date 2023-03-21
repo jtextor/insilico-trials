@@ -76,7 +76,7 @@ set.seed(42)
 if( Sys.getenv("DRAFT_MODE") != "" ){
 	r <- abc( th_init, th_mut, N=50, dev, th_prior, max_iter=10 )
 	saveRDS( r, file="data/M2-ipi-abc-result-draft.Rds" )
-	R.utils::touchFile("data/M2-ipi-abc-result.Rds") 
+	touch("data/M2-ipi-abc-result.Rds") 
 } else {
 	r <- abc( th_init, th_mut, N=500, dev, th_prior )
 	saveRDS( r, file="data/M2-ipi-abc-result.Rds" )

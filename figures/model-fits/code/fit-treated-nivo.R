@@ -79,7 +79,7 @@ set.seed(42)
 if( Sys.getenv("DRAFT_MODE") != "" ){
 	r <- abc( th_init, th_mut, N=10, dev, th_prior, max_iter=3 )
 	saveRDS( r, file="data/M1-nivo-abc-result-draft.Rds" )
-	R.utils::touchFile("data/M1-nivo-abc-result.Rds") 
+	touch("data/M1-nivo-abc-result.Rds") 
 } else {
 	r <- abc( th_init, th_mut, N=500, dev, th_prior )
 	saveRDS( r, file="data/M1-nivo-abc-result.Rds" )

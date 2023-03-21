@@ -12,9 +12,18 @@ figure.pdf : figure.tex $(PLOTS)
 plots/%.pdf : code/plot-%.R data/%.Rdata
 	Rscript $<
 
-data/b2.Rdata : ../model-fits/data/M1-ipi-xmin.Rds
-data/c2.Rdata : ../model-fits/data/M2-ipi-xmin.Rds
-data/d2.Rdata : ../model-fits/data/M3-ipi-xmin.Rds
+data/b1.Rdata : data/M1-lung-xmin.Rds
+data/c1.Rdata : data/M2-lung-xmin.Rds
+data/d1.Rdata : data/M3-lung-xmin.Rds
+
+data/b2.Rdata : data/M1-ipi-xmin.Rds
+data/c2.Rdata : data/M2-ipi-xmin.Rds
+data/d2.Rdata : data/M3-ipi-xmin.Rds
+
+data/b3.Rdata : data/M1-nivo-xmin.Rds
+data/c3.Rdata : data/M2-nivo-xmin.Rds
+data/d3.Rdata : data/M3-nivo-xmin.Rds
+
 
 data/%.Rdata : code/prepare-%.R
 	Rscript $<

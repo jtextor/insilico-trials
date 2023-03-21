@@ -1,7 +1,7 @@
 .SECONDARY:
 .DELETE_ON_ERROR:
 
-#export DRAFT_MODE=1
+export DRAFT_MODE=1  ## fewer and smaller simulations, remove for same settings as in paper
 
 all : figure.pdf
 

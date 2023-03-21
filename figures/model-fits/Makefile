@@ -1,7 +1,7 @@
 .SECONDARY:
 .DELETE_ON_ERROR:
 
-# export DRAFT_MODE=1
+export DRAFT_MODE=1
 
 all : data/M1-ipi-abc-result.Rds data/M1-nivo-abc-result.Rds data/M1-lung-abc-result.Rds \
 	data/M2-ipi-abc-result.Rds data/M2-nivo-abc-result.Rds data/M2-lung-abc-result.Rds \
@@ -18,25 +18,23 @@ data/M1-lung-abc-result.Rds : code/fit-lung.R
 
 
 
-data/M2-ipi-abc-result.Rds : code/fit-treated-ipi.R
+data/M2-ipi-abc-result.Rds : code/fit-treated-ipi-m2.R
 	Rscript $<
 
-data/M2-nivo-abc-result.Rds : code/fit-treated-nivo.R
+data/M2-nivo-abc-result.Rds : code/fit-treated-nivo-m2.R
 	Rscript $<
 
-data/M2-lung-abc-result.Rds : code/fit-lung.R
+data/M2-lung-abc-result.Rds : code/fit-lung-m2.R
 	Rscript $<
 
 
-
-
-data/M3-ipi-abc-result.Rds : code/fit-treated-ipi.R
+data/M3-ipi-abc-result.Rds : code/fit-treated-ipi-m3.R
 	Rscript $<
 
-data/M3-nivo-abc-result.Rds : code/fit-treated-nivo.R
+data/M3-nivo-abc-result.Rds : code/fit-treated-nivo-m3.R
 	Rscript $<
 
-data/M3-lung-abc-result.Rds : code/fit-lung.R
+data/M3-lung-abc-result.Rds : code/fit-lung-m3.R
 	Rscript $<
 
 
