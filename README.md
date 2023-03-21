@@ -10,7 +10,7 @@ The manuscript (the revised version of which can be found in this repository) de
 
 There is also a web-based implementation, written in JavaScript, available at https://computational-immunology.org/models/immunotherapy-trials/.
 
-Finally, see the folder `figures/` for the code used to perform the analyses and generate the figures shown in the manuscript.
+Finally, see the folder "figures" for the code used to perform the analyses and generate the figures shown in the manuscript.
 
 ## System requirements
 
