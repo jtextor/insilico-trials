@@ -6,7 +6,7 @@ source("../tools.R")
 
 #r <- list(par=c(2.330008, 1.088195, 0.776826)) 
 
-r <- readRDS("../model-fits/data/M1-lung-xmin.Rds")
+r <- readRDS("data/M1-lung-xmin.Rds")
 
 .Random.seed <- attr(r,"seed")
 df <- data.frame( time=get_s_M1(N=228, mean=r[1], sd=r[2], lower_growth=r[3]), status=1 )

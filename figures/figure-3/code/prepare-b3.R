@@ -4,7 +4,7 @@
 library( survival )
 source("../tools.R")
 
-r <- readRDS("../model-fits/data/M1-nivo-xmin.Rds")
+r <- readRDS("data/M1-nivo-xmin.Rds")
 .Random.seed <- attr(r,"seed")
 
 

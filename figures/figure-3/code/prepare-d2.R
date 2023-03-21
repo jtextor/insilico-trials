@@ -2,7 +2,7 @@
 library( survival )
 source("../tools.R")
 
-r <- readRDS("../model-fits/data/M3-ipi-xmin.Rds")
+r <- readRDS("data/M3-ipi-xmin.Rds")
 .Random.seed <- attr(r,"seed")
 
 df1 <- data.frame( randomization="b_placebo", time=get_s_M3(N=250,mean=r[1], sd=r[2], lower_growth=r[3], 

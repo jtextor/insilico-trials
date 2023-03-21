@@ -4,7 +4,7 @@ library( survival )
 
 source("../tools.R")
 
-r <- readRDS("../model-fits/data/M2-lung-xmin.Rds")
+r <- readRDS("data/M2-lung-xmin.Rds")
 .Random.seed <- attr(r,"seed")
 
 df <- data.frame( time=get_s_M2(N=228, mean=r[1], sd=r[2], lower_growth=r[3]), status=1 )
