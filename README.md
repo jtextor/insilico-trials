@@ -10,6 +10,8 @@ The manuscript (the revised version of which can be found in this repository) de
 
 There is also a web-based implementation, written in JavaScript, available at https://computational-immunology.org/models/immunotherapy-trials/.
 
+Finally, see the folder `figures/` for the code used to perform the analyses and generate the figures shown in the manuscript.
+
 ## System requirements
 
 The web-based implementation should run on any computer that has a modern web browser. We have tried this on Chrome, Safari, and Firefox. 
@@ -31,7 +33,7 @@ remotes::install_github("jtextor/insilico-trials/models/TumorImmuneModels")
 For the web-based version, visit the page https://computational-immunology.org/models/immunotherapy-trials/ and a demo simulation will immediately start running. To generate a study that shows a very clear immunotherapy effect, use the sliders to set the parameter "Growth Rate Mean" to 2.5 and "Immunotherapy effect" to 10 or higher. Note that these are stochastic simulations: re-running the simulations with the same parameters will generate different survival curves each time, due to the random variation in parameters. 
 
 For the R package, see the example below, which re-creates (a simplified version of) 
-Figure 3A in the paper.
+Figure 3A in the paper. This should not take more than about a second on typical hardware.
 
 ```
 library( TumorImmuneModels )
