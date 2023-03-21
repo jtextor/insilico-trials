@@ -1,11 +1,7 @@
 
-library( ggsankey )
+library( ggsankey ) # installed using remotes::install_github("davidsjoberg/ggsankey")
 library( ggplot2 )
 library( dplyr )
-
-# Implements Brian-O'Fleming bounds for alpha spending in 
-# multiple interim analyses
-library(ldbounds)
 
 source("../tools.R")
 source("../settings.R")
