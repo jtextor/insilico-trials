@@ -12,6 +12,8 @@ There is also a web-based implementation, written in JavaScript, available at ht
 
 Finally, see the folder "figures" for the code used to perform the analyses and generate the figures shown in the manuscript.
 
+[![DOI](https://zenodo.org/badge/581540126.svg)](https://zenodo.org/badge/latestdoi/581540126)
+
 ## System requirements
 
 The web-based implementation should run on any computer that has a modern web browser. We have tried this on Chrome, Safari, and Firefox. 
