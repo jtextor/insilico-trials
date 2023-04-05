@@ -19,7 +19,7 @@ pdf_out( file="plots/insilico-trials.pdf", width=17*0.3937, height=3.45*0.3937, 
 plt_series( "M1", baseline_m1, chemo_effect_m1, immuno_effect_m1 )
 
 ## Longer chemotherapy for comparison
-plt( lg_t=chemo_effect_m1, xlab="", chemo_duration_t=24, treatment_schedule = {
+plt( lg_t=chemo_effect_m1, xlab="", main="Long chemotherapy vs. placebo", chemo_duration_t=24, treatment_schedule = {
 	segments( 0, -.05, 24, -.05, lwd=1.5, lend=1 )
 	} )
 

@@ -16,7 +16,7 @@
 % Font settings:
 %\renewcommand{\familydefault}{\sfdefault}
 
-\newcommand{\figf}{} %Defines the font used for the labelling of figure panels.
+\newcommand{\figf}{\bfseries} %Defines the font used for the labelling of figure panels.
 
 
 \newcommand{\panellabel}[2]{
@@ -54,13 +54,13 @@
 \begin{tikzpicture}[yscale=1]
 
 \panel{A}{0,0}{\includegraphics[page=1]{plots/power-analysis.pdf}}
-\panel{B}{5.667,0}{\includegraphics[page=2]{plots/power-analysis.pdf}}
-\panel{C}{11.337,0}{\includegraphics[page=3]{plots/power-analysis.pdf}}
+\panel{}{5.667,0}{\includegraphics[page=2]{plots/power-analysis.pdf}}
+\panel{}{11.337,0}{\includegraphics[page=3]{plots/power-analysis.pdf}}
 
 \begin{scope}[yshift=-5.25cm]
-\panel{D}{0,0}{\includegraphics[page=4]{plots/power-analysis.pdf}}
-\panel{E}{5.667,0}{\includegraphics[page=5]{plots/power-analysis.pdf}}
-\panel{F}{11.337,0}{\includegraphics[page=6]{plots/power-analysis.pdf}}
+\panel{B}{0,0}{\includegraphics[page=4]{plots/power-analysis.pdf}}
+\panel{}{5.667,0}{\includegraphics[page=5]{plots/power-analysis.pdf}}
+\panel{}{11.337,0}{\includegraphics[page=6]{plots/power-analysis.pdf}}
 \end{scope}
 
 
